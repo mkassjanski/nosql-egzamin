@@ -5,6 +5,7 @@ require 'builder'
 require 'optparse'
 require_relative '../lib/connection'
 
+
 options = {}
 optparse = OptionParser.new do |opt|
   opt.on('-l', '--limit number') { |o| options[:limit] = o }
@@ -25,15 +26,20 @@ end
 conn = Connection.new
 db = conn.client.database
 alarms = conn.alarms
-start = Time.now
-results = alarms.aggregate([
-  {'$group' => { '_id' => '$description','count' => { '$sum' => 1}}},
-  {'$sort' => {count: -1}},
-  {'$limit' => Integer(limit)}
-  ])
 
-  finish = Time.new
-  p finish-start
+reduce_count = "function(key, values) { " +
+                "var sum = 0; " +
+                "values.forEach(function(f) { " +
+                " sum += f.count; " +
+                "}); " +
+                "return {count: sum};" +
+        "};"
+map = "function() { emit(this.description, {count: 1}); }"
+reduce = reduce_count
+start = Time.now
+results = alarms.find().map_reduce(map, reduce)
+finish = Time.new
+p finish-start
 data = results.to_a
 xm = Builder::XmlMarkup.new(:indent => 2)
 xm.table {
@@ -44,4 +50,4 @@ xm.table {
 if File.file?('descriptions_count.html')
   File.truncate('descriptions_count.html',0)
 end
-File.write('descriptions_count.html',"#{xm}")
+File.write('descriptions_count2.html',"#{xm}")

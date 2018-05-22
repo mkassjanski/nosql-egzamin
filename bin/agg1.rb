@@ -28,7 +28,7 @@ end
 conn = Connection.new
 db = conn.client.database
 alarms = conn.alarms
-
+start = Time.now
 results = alarms.aggregate([
   {'$group' => { _id: {district: "$district"}, 'countall' => { '$sum' => 1}}},
   {'$sort' => {district: -1}}
@@ -40,6 +40,8 @@ results = alarms.aggregate([
     {'$sort' => {district: -1}}
     ])
 
+    finish = Time.new
+    p finish-start
 all_results=results.to_a
 match_results=results2.to_a
 
