@@ -1,6 +1,45 @@
 ## Projekt na egzamin z NoSQL
 
+Skład grupy:
+-------
+- Krzysztof Łozowski
+- Michał Kassjański
+- Michał Kisielewski
 
+Struktura bazy:
+-------
+[source,js]
+db.alarms.findOne()
+{
+	"_id" : ObjectId("5ac48f79f6968ccc1f0274f1"),
+	"" : 1,
+	"callDateTime" : "2015-07-13 10:47:00",
+	"priority" : "Medium",
+	"district" : "CD",
+	"description" : "911/NO  VOICE",
+	"callNumber" : "P151941003",
+	"incidentLocation" : "600 E FAYETTE ST",
+	"location" : "(39.2906737,-76.6071600)"
+}
+
+Opis projektu
+-------
+Projekt został napisany w Ruby i korzysta z [Ruby MongoDB Driver](https://docs.mongodb.com/ruby-driver/master/).
+
+Opis agregacji
+-------
+1. **bin/agg1.rb**
+
+Skrypt zwraca procentowe statystyki wybranego powodu zgłoszenia w dzielnicach.
+```
+$ ./agg3.rb -d <description>
+```
+W przypadku nie podania parametru, skrypt wybierze powod "911/NO  VOICE".
+
+Została napisany analogiczny map_reduce w pliku **bin/agg1.rb**.
+
+Przykładowy wynik agregracji i map_reduce:
+![alt text](https://i.imgur.com/1HyHiKN.png "Logo Title Text 1")
 
 
 TODO:
