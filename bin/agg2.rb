@@ -25,15 +25,12 @@ end
 conn = Connection.new
 db = conn.client.database
 alarms = conn.alarms
-start = Time.now
 results = alarms.aggregate([
   {'$group' => { '_id' => '$description','count' => { '$sum' => 1}}},
   {'$sort' => {count: -1}},
   {'$limit' => Integer(limit)}
   ])
 
-  finish = Time.new
-  p finish-start
 data = results.to_a
 xm = Builder::XmlMarkup.new(:indent => 2)
 xm.table {

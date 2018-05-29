@@ -37,12 +37,9 @@ reduce_count = "function(key, values) { " +
         "};"
 map = "function() { emit(this.district, {count: 1}); }"
 reduce = reduce_count
-start = Time.now
 results = alarms.find().map_reduce(map, reduce)
 alarms = alarms.find( { description: description } );
-results2 = alarms.map_reduce(map, reduce, query: { description: description })
-finish = Time.new
-p finish-start
+results2 = alarms.map_reduce(map, reduce,)
 s = results
 s2 = results2
 
@@ -84,5 +81,5 @@ h=Hash[*arr]
 
   Prawn::Document.generate("procent1.pdf") do
     data = {alarms: h}
-    chart data
+    chart data, format: :percentage, label: true
   end

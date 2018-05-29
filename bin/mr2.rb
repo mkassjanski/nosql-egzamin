@@ -36,10 +36,7 @@ reduce_count = "function(key, values) { " +
         "};"
 map = "function() { emit(this.description, {count: 1}); }"
 reduce = reduce_count
-start = Time.now
-results = alarms.find().map_reduce(map, reduce)
-finish = Time.new
-p finish-start
+results = alarms.find().map_reduce(map, reduce, limit:10)
 data = results.to_a
 xm = Builder::XmlMarkup.new(:indent => 2)
 xm.table {
@@ -47,7 +44,7 @@ xm.table {
   data.each { |row| xm.tr { row.values.each { |value| xm.td(value)}}}
 }
 
-if File.file?('descriptions_count.html')
-  File.truncate('descriptions_count.html',0)
+if File.file?('descriptions_count2.html')
+  File.truncate('descriptions_count2.html',0)
 end
 File.write('descriptions_count2.html',"#{xm}")
