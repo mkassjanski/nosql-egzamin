@@ -7,6 +7,34 @@ Skład grupy:
 - Michał Kisielewski
 
 
+Informacje o zbiorze danych (w KB):
+```js
+db.alarms.stats( { scale : 1024 } )
+{
+	"ns" : "test.alarms",
+	"count" : 2799916,
+	"size" : 730929,
+	"avgObjSize" : 267,
+	"storageSize" : 218156,
+	 ...
+}
+```
+
+Struktura bazy:
+```js
+db.alarms.findOne()
+{
+	"_id" : ObjectId("5ac48f79f6968ccc1f0274f1"),
+	"" : 1,
+	"callDateTime" : "2015-07-13 10:47:00",
+	"priority" : "Medium",
+	"district" : "CD",
+	"description" : "911/NO  VOICE",
+	"callNumber" : "P151941003",
+	"incidentLocation" : "600 E FAYETTE ST",
+	"location" : "(39.2906737,-76.6071600)"
+}
+```
 Opis projektu
 -------
 Projekt został napisany w Ruby i korzysta z [Ruby MongoDB Driver](https://docs.mongodb.com/ruby-driver/master/).
@@ -86,6 +114,11 @@ Przykładowy wynik agregacji:
 </table>
 <to_s/>
 
+Wnioski:
+-------
+- agregacje i map_reduce wykonywane na localhost wykanują się szybciej niż na dockerze,
+- dodanie odpowiednich indesków powoduje przyspieszenie wykonywania agregracji,
+- według naszych obserwacji indeksy nie wpływaja tak mocno na map_reduce jak na agregracje.
 
 
 TODO:
@@ -96,8 +129,8 @@ TODO:
 - [x] Zliczenie czasow na localhost
 - [x] Zliczenie czasow na docker
 - [x] Stworzenie tabelki z czasami
-- [ ] README
-- [ ] Wnioski
+- [x] README
+- [x] Wnioski
 
 
 Czasy:
