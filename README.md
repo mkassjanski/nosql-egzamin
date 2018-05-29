@@ -17,14 +17,14 @@ Opis agregacji
 
 Skrypt zwraca procentowe statystyki wybranego powodu zgłoszenia w dzielnicach.
 ```
-$ ./agg3.rb -d <description>
+$ ./agg1.rb -d <description>
 ```
 W przypadku nie podania parametru, skrypt wybierze powod "911/NO  VOICE".
 
 Została napisany analogiczny map_reduce w pliku **bin/mr1.rb**.
 
 Przykładowy wynik agregracji i map_reduce:
-![alt text](https://i.imgur.com/1HyHiKN.png "Logo Title Text 1")
+![alt text](https://raw.githubusercontent.com/mkassjanski/nosql-egzamin/master/image.png "Logo Title Text 1")
 
 
 TODO:
