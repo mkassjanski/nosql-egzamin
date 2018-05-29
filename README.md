@@ -43,10 +43,10 @@ Czasy:
 -------
 | Operacja | localhost | localhost + indexes | docker | docker + indexes |
 | --- | --- | --- | --- | --- |
-| `pierwsza agregacja` | 7.830s | 6.807s | 6.8475e-05 | 6.8604e-05 |
-| `pierwszy map_reduce` | 1m2.955s | 1m3.234s | 8.8391e-05 | 0.000114419 |
-| `druga agregacja` | 4.842s | 4.636s| 4.9161e-05| 9.9474e-05 |
-| `drugi map_reduce` | 1m38.739s | 1m38.155s| 5.3842e-05 | 9.7165e-0 |
+| `pierwsza agregacja` | 7.830s | 6.807s | 8.636s | 6.753s |
+| `pierwszy map_reduce` | 1m2.955s | 1m3.234s | 1m4.780s | 1m4.109s |
+| `druga agregacja` | 4.842s | 4.636s| 4.898s| 4.693s |
+| `drugi map_reduce` | 1m38.739s | 1m38.155s| 1m30.852s | 1m32.020s |
 
 Rspec
 ----------
