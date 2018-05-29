@@ -123,6 +123,7 @@ Wnioski:
 - agregacje i map_reduce wykonywane na localhost wykanują się szybciej niż na dockerze,
 - dodanie odpowiednich indesków powoduje przyspieszenie wykonywania agregracji,
 - według naszych obserwacji indeksy nie wpływaja tak mocno na map_reduce jak na agregracje.
+- map_readuce wykonują sie znaczenie dłużej niż agregację, podejrzewamy, że chodzi o wykorzystanie polecanie find().
 
 
 TODO:
