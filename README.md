@@ -38,6 +38,10 @@ db.alarms.findOne()
 Opis projektu
 -------
 Projekt został napisany w Ruby i korzysta z [Ruby MongoDB Driver](https://docs.mongodb.com/ruby-driver/master/).
+Cały obraz maszyny, wraz z projektem i bazą danych można pobrać za pomocą dockera:
+```
+docker pull mkassjanski/nosql
+```
 
 Opis agregacji 1
 -------
